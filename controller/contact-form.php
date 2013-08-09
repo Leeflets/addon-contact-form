@@ -32,7 +32,7 @@ class Contact_Form extends \Leeflets\Controller {
         }
 
         if ( !\Leeflets\String::valid_email( $_POST['sender_email'] ) ) {
-            $errors[$req] = 'invalid';
+            $errors['sender_email'] = 'invalid';
         }
 
         $malicious = array( 'sender_name', 'sender_email' );
