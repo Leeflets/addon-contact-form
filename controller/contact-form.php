@@ -26,13 +26,13 @@ class Contact_Form extends \Leeflets\Controller {
             }
         }
 
+        if ( !isset( $errors['sender_email'] ) && !\Leeflets\String::valid_email( $_POST['sender_email'] ) ) {
+            $errors['sender_email'] = 'invalid';
+        }
+
         if ( !empty( $errors ) ) {
             echo json_encode( compact( 'errors' ) );
             exit;
-        }
-
-        if ( !\Leeflets\String::valid_email( $_POST['sender_email'] ) ) {
-            $errors['sender_email'] = 'invalid';
         }
 
         $malicious = array( 'sender_name', 'sender_email' );
